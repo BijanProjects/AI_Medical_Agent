@@ -2,6 +2,7 @@
 
 AI Medical Agent leverages Retrieval-Augmented Generation (RAG) to analyze medical question-and-answer datasets, providing users with expert-informed recommendations for their medical queries. This project aims to enhance medical decision-making by integrating advanced natural language processing techniques with reliable medical data sources.
 
+
 ## Features
 
 - **Retrieval-Augmented Generation (RAG):** Combines retrieval-based methods with generative models to produce accurate and contextually relevant responses.
@@ -56,4 +57,5 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 Dataset link: [Comprehensive Medical Q&A Dataset](https://www.kaggle.com/datasets/thedevastator/comprehensive-medical-q-a-dataset)
 
-This project was inspired by advancements in AI-driven medical agents and frameworks such as LUCI ([revmaxx.co](https://www.revmaxx.co/luci/?utm_source=chatgpt.com)) and MDAgents ([arxiv.org](https://arxiv.org/abs/2404.15155?utm_source=chatgpt.com)), which aim to enhance medical decision-making through artificial intelligence.
+## Note:
+Model is under final testing and will be shared on HuggingFace soon.
