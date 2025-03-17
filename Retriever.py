@@ -17,6 +17,3 @@ def similarity_search(query, top_k = 3):
     return knowledge
 
 
-# print(similarity_search(['Whenever I jump my leg hurts; what should I do?']))
-
-
