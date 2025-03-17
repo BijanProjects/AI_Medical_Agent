@@ -1,6 +1,6 @@
-# AI Medical Agent
+# RAGMed
 
-AI Medical Agent leverages Retrieval-Augmented Generation (RAG) to analyze medical question-and-answer datasets, providing users with expert-informed recommendations for their medical queries. This project aims to enhance medical decision-making by integrating advanced natural language processing techniques with reliable medical data sources.
+RAGMed leverages Retrieval-Augmented Generation (RAG) to analyze medical question-and-answer datasets, providing users with expert-informed recommendations for their medical queries. This project aims to enhance medical decision-making by integrating advanced natural language processing techniques with reliable medical data sources.
 
 
 ## Features
