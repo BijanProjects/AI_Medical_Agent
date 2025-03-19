@@ -1,9 +1,7 @@
 from retriever import similarity_search
-import unsloth
-# context = similarity_search(['Whenever I jump my leg hurts; what should I do?'], 1)
-# print(context)
-
-
+from unsloth import FastLanguageModel
+from unsloth import FastLlamaModel
+import torch
 
 
 
@@ -27,22 +25,26 @@ Response:
 """
 
 
-
-# query = ['What medications and dosage guide must a pre-diabetic person follow? How much exercise would be good for them?']
-
-# context = similarity_search(query, top_k = 3)
-#prompt = prompt.format(context, query[0])
+model, tokenizer = FastLlamaModel.from_pretrained(model_name='unsloth/Llama-3.2-3B-Instruct',
+                                                  max_seq_length=8192,
+                                                  load_in_4bit=True)
 
 
+def generate(model, tokenizer, query, prompt):
+  context = similarity_search(query, top_k = 3)
+  prompt = prompt.format(context, query[0])
+  device = 'cuda' if torch.cuda.is_available() else 'cpu'
+  
+  inputs = tokenizer(prompt, return_tensors='pt').to(device)
 
-# def generate_response(prompt):
-#     tokenized = tokenizer(prompt, return_tensors='pt')
-#     output = model.generate(**tokenized, max_length= 2000)
-#     return tokenizer.decode(output, skip_special_tokens=True)
+  output = model.generate(**inputs, max_new_tokens = 1000, temperature=0.5)
+  output = tokenizer.decode(output[0], skip_special_tokens=True)
+  response_text = output.split("Response:\n", 1)[1] if "Response:\n" in output else output.strip()
+    
+  return response_text.strip()
 
 
 
-# response = generate_response(prompt=prompt)
-# print("AI response is:{response}")
+query = input("Please ask your medical question:\n")
 
-# print(f"context 1: {context[0]} \n\n\n\n context 2: {context[1]} \n\n\n\n context 3: {context[2]}")
+print(generate(model, tokenizer, [query], prompt))
